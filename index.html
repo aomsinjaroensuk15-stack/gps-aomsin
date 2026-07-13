@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="th">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#05070a">
+  <title>STREET WALK — เดินตามถนนแบบ 360°</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+  <!-- ============ หน้าจอตั้งค่าเส้นทาง ============ -->
+  <div id="setup-panel">
+   <header>
+    <h1>STREET WALK</h1>
+    <p class="tagline">เดินสำรวจเส้นทางจริงแบบ first-person 360°</p>
+   </header>
+   <div class="field-wrap">
+    <label class="field-label">จุดเริ่มต้น</label> <gmp-place-autocomplete id="origin-input" placeholder="พิมพ์เพื่อค้นหา..." requested-language="th" requested-region="TH"></gmp-place-autocomplete>
+   </div>
+   <div class="field-wrap">
+    <label class="field-label">จุดหมาย</label> <gmp-place-autocomplete id="destination-input" placeholder="พิมพ์เพื่อค้นหา..." requested-language="th" requested-region="TH"></gmp-place-autocomplete>
+   </div>
+   <div class="field-wrap">
+    <label class="field-label">โหมดเดินทาง</label> <select id="travel-mode"> <option value="WALKING">🚶 เดินเท้า</option> <option value="DRIVING">🚗 ขับรถ</option> </select>
+   </div>
+   <div id="mini-map"></div>
+   <button id="start-btn">▶ เริ่มเดินทาง</button>
+   <p id="status-msg"></p>
+  </div>
+  <!-- ============ โหมด Street View เต็มจอ ============ -->
+  <div id="streetview-container" class="hidden">
+   <div id="progress-bar">
+    <div id="progress-fill"></div>
+   </div>
+   <div id="pano"></div>
+   <div id="compass-hud" class="hud-panel">
+    <span id="compass-heading">N 0°</span>
+   </div>
+   <button id="exit-btn" title="ออก">✕</button>
+   <div id="overlay-controls" class="hud-panel">
+    <button id="play-pause-btn" title="เล่น / หยุด">⏸</button>
+    <input id="speed-slider" type="range" min="1" max="10" step="1" value="6" title="ความเร็ว">
+    <button id="face-forward-btn" title="หันหน้าไปตามเส้นทาง">🧭</button>
+    <label class="auto-face-label"> <input id="auto-face-checkbox" type="checkbox" checked> อัตโนมัติ </label>
+   </div>
+  </div>
+  <script src="src/config.js"></script>
+  <script src="src/mapView.js"></script>
+  <script src="src/directionsService.js"></script>
+  <script src="src/routeWalker.js"></script>
+  <script src="src/streetViewController.js"></script>
+  <script src="src/app.js"></script>
+  <script src="src/mapsLoader.js"></script>
+ </body>
+</html>
